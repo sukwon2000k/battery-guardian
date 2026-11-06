@@ -1,0 +1,27 @@
+name: Android debug build
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: android-actions/setup-android@v3
+      - uses: gradle/actions/setup-gradle@v4
+      # 저장소의 Gradle/SDK 버전을 유지한다. 플랫폼이 제공되지 않으면 단계가 실패한다.
+      - name: Install project SDK
+        run: sdkmanager 'platforms;android-37'
+      - name: Test and build
+        run: bash gradlew testDebugUnitTest assembleDebug --stacktrace
+      - uses: actions/upload-artifact@v4
+        with:
+          name: battery-guardian-debug
+          path: app/build/outputs/apk/debug/*.apk

@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">BatteryGuardian</string>
+    <string name="app_name">배터리 지킴이</string>
+    <string name="media_access_label">배터리 지킴이 · 미디어 일시정지</string>
+    <string name="accessibility_description">설정한 시간과 배터리 조건에 따라 홈 화면으로 이동하고 화면을 잠급니다. 시계·알람 화면을 피하기 위해 창의 앱 이름을 일시 확인하며, 화면 내용과 입력 내용은 읽거나 저장하지 않습니다.</string>
 </resources>
